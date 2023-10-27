@@ -50,4 +50,3 @@ window.switchTool = (tool) => {
 };
 
 setTimeout(() => switchTool(states.bunsen), 1000);
-setTimeout(() => switchTool(states.bunsen), 2000);
