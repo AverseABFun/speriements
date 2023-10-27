@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: black;
+  overflow-x: hidden;
+  background-color: black;
+  background-image: url(https://raw.githubusercontent.com/AverseABFun/speriments-assets/main/lab.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#main {
+  position: absolute;
+  padding: 1rem;
+  transition: all 0.5s;
+}
+#main.slide_out {
+  right: -200%;
+}
+#main.slide_in {
+  left: -200%;
+  right: auto;
+  transition: all 0.5s;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#extra {
+  position: absolute;
+  right: 0;
+}
+
+#tool {
+  top: 50%;
+  height: 25%;
+}
