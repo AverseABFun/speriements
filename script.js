@@ -1,6 +1,6 @@
 function log(text) {
   console.log(text);
-  document.getElementById("console").innerHTML += text;
+  document.getElementById("console").innerHTML += text+"\n<br>";
 }
 const bunsenStates = {
   off: 'https://raw.githubusercontent.com/AverseABFun/speriments-assets/main/bunsenoff.png',
@@ -24,6 +24,7 @@ const defaultStates = {
 
 window.states = Object.assign(defaultStates);
 window.states.bunsen.extraInteract = () => {
+  log("extra clicked");
   if (states.bunsen.tool == bunsenStates.off) {
     states.bunsen.extra = gasStates.on;
     states.bunsen.tool = bunsenStates.on;
@@ -31,6 +32,8 @@ window.states.bunsen.extraInteract = () => {
     states.bunsen.extra = gasStates.off;
     states.bunsen.tool = bunsenStates.off;
   }
+  elements.tool.src = states.bunsen.tool;
+  elements.extra.src = states.bunsen.extra;
 };
 window.states.empty.extraInteract = () => {};
 
@@ -38,7 +41,7 @@ const elements = {
   beaker: document.getElementById('beaker'),
   tool: document.getElementById('tool'),
   extra: document.getElementById('extra'),
-  main: document.querySelector('#main'),
+  main: document.getElementById('main'),
 };
 
 window.switchTool = (tool) => {
@@ -48,10 +51,13 @@ window.switchTool = (tool) => {
     elements.tool.src = tool.tool;
     elements.extra.src = tool.extra;
     elements.extra.onclick = tool.extraInteract;
-    elements.main.classList.remove('slide_in');
+    log("set srcs and extra onclick");
+    elements.main.classList.remove('slide_out');
+    log("remove slide_out")
     elements.main.classList.add('slide_in');
-    setTimeout(() => elements.main.classList.remove('slide_in'), 10);
-  }, 550);
+    log("added slide_in")
+    setTimeout(() => {elements.main.classList.remove('slide_in'); log("removed slide_in")}, 10);
+  }, 1000);
 };
 
 setTimeout(() => switchTool(states.bunsen), 1000);
