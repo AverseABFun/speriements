@@ -42,3 +42,8 @@ h1 {
   top: 50%;
   height: 25%;
 }
+
+#console {
+  position: absolute;
+  bottom: 10px;
+}

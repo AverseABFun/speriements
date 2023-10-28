@@ -1,3 +1,7 @@
+function log(text) {
+  console.log(text);
+  document.getElementById("console").innerHTML += text;
+}
 const bunsenStates = {
   off: 'https://raw.githubusercontent.com/AverseABFun/speriments-assets/main/bunsenoff.png',
   on: 'https://raw.githubusercontent.com/AverseABFun/speriments-assets/main/bunsenon.png',
@@ -39,6 +43,7 @@ const elements = {
 
 window.switchTool = (tool) => {
   elements.main.classList.add('slide_out');
+  log("Added slide_out");
   setTimeout(() => {
     elements.tool.src = tool.tool;
     elements.extra.src = tool.extra;
