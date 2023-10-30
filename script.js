@@ -24,7 +24,6 @@ const defaultStates = {
 
 window.states = Object.assign(defaultStates);
 window.states.bunsen.extraInteract = () => {
-  log("extra clicked");
   if (states.bunsen.tool == bunsenStates.off) {
     states.bunsen.extra = gasStates.on;
     states.bunsen.tool = bunsenStates.on;
@@ -45,19 +44,17 @@ const elements = {
 };
 
 window.switchTool = (tool) => {
-  elements.main.classList.add('slide_out');
+  elements.main.style.animation = "slide_out 3s linear";
   log("Added slide_out");
   setTimeout(() => {
     elements.tool.src = tool.tool;
     elements.extra.src = tool.extra;
     elements.extra.onclick = tool.extraInteract;
     log("set srcs and extra onclick");
-    elements.main.classList.remove('slide_out');
+    elements.main.style.animation = "";
     log("remove slide_out")
-    elements.main.classList.add('slide_in');
+    elements.main.style.animation = "slide_in 4s linear";
     log("added slide_in")
-    setTimeout(() => {elements.main.classList.remove('slide_in'); log("removed slide_in")}, 10);
-  }, 1000);
+  }, 3000);
 };
 
-setTimeout(() => switchTool(states.bunsen), 1000);
